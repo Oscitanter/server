@@ -1,19 +1,9 @@
-const express = require('express')
-const app = express()
+const { json } = require("body-parser");
+const express = require("express");
+const userRouter = require("./routes/users");
+const app = express();
 
-app.use(token)
+app.use(json());
+app.use("/users", userRouter);
 
-app.get('/', (req, res) => {
-   res.send('Pata "localhost:3000/Dananas"')
-})
-
-app.get("/Dananas", (req, res) => {
-    res.send("Dimitris")
-})
-
-function token(req, res, next) {
-console.log('Token')
-next()
-}
-
-app.listen(3000)
+app.listen(3000, () => console.log("Server is running on port 3000"));
